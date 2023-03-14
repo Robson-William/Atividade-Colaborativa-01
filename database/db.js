@@ -1,4 +1,4 @@
-const { Sequelize } = require("sequelize");
+const { Sequelize } = require();
 require("dotenv").config();
 
 const sequelize = new Sequelize(
