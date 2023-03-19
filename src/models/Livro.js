@@ -15,4 +15,4 @@ const Livro = sequelize.define("Livro", {
   },
 });
 
-module.exports = Livro;
+export {Livro};

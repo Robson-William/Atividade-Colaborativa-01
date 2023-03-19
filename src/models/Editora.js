@@ -18,4 +18,4 @@ const Editora = sequelize.define("Editora", {
   },
 });
 
-module.exports = Editora;
+export {Editora};
