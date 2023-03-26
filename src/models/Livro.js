@@ -16,6 +16,13 @@ const Livro = sequelize.define("Livro", {
   },
 });
 
+try {
+	await Livro.sync();
+	console.log("Sincronizado!");
+} catch(e) {
+	console.log(e);
+}
+
 async function createBook(dados) {
   try {
     let livroBuild = Livro.build(dados);
