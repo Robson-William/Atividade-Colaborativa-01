@@ -44,12 +44,37 @@ async function list() {
   }
 }
 
-async function search() {
+async function search(id) {
   try {
-    // Pra fazer
+    let livro = await Livro.findByPk(id);
+
+		if(livro === null){
+			return {};
+		} else {
+			return livro;
+		}
   } catch (e) {
     console.log(e);
   }
 }
 
-export { createBook, list, search };
+async function update(livro, dados) {
+	if(livro === null){
+		return "Não é possivel atualizar. Livro inexistente!";
+	} else {
+		livro.set(dados);
+		await livro.save();
+		return livro;
+	}
+}
+
+async function deletar(livro) {
+	if(livro === null) {
+		return 'Não é possivel excluir. Livro inexistente!';
+	} else {
+		await livro.destroy();
+		return 'Livro deletado!';
+	}
+}
+
+export { createBook, list, search, update, deletar };
