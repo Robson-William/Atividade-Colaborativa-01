@@ -1,0 +1,14 @@
+{% extends "layout.html" %} 
+
+{% set title = "Home" %} 
+
+
+{% block content %}
+    {% for livro in livros %}
+        <div>
+            <p>{{livro.id}}</p>
+            <p>{{livro.titulo}}</p>
+            <p>{{livro.dataDeLancamento}}</p>
+        </div>
+    {% endfor %}
+{%endblock %}

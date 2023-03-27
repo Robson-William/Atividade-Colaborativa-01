@@ -11,7 +11,7 @@ const create = async (req, res) => {
 const list = async (req, res) => {
 	let editoras = await Editora.list();
 
-	res.json(editoras);
+	res.render("pages/index", {editoras})
 };
 
 const search = async (req, res) => {

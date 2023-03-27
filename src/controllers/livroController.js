@@ -11,7 +11,7 @@ const create = async (req, res) => {
 const list = async (req, res) => {
 	let livros = await Livro.list();
 
-	res.json(livros);
+	res.render("pages/index", {livros})
 };
 
 const search = async (req, res) => {
