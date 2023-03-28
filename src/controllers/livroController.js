@@ -1,35 +1,35 @@
 import * as Livro from "../models/Livro.js";
 
-const create = async (req, res) => {
+const criar = async (req, res) => {
   let livro = req.body;
 
   let livroSalvo = await Livro.createBook(livro);
 
-  res.json(livroSalvo);
+  res.redirect("listar");
 };
 
-const list = async (req, res) => {
+const listar = async (req, res) => {
 	let livros = await Livro.list();
 
 	res.render("pages/index", {livros})
 };
 
-const search = async (req, res) => {
-  let {id} = req.params;
+const buscar = async (req, res) => {
+  let {id} = req.query;
 
 	let livro = await Livro.search(id);
-
-	res.json(livro);
+	console.log(livro);
+	res.render("pages/buscar", {livro})
 };
 
-const update = async (req, res) => {
+const atualizar = async (req, res) => {
 	let {id} = req.params;
   let {titulo, dataDeLancamento} = req.body;
 
-	let livro = {titulo, dataDeLancamento};
+	let dados = {titulo, dataDeLancamento};
 	let busca = await Livro.search(id);
 
-	let livroAtualizado = await Livro.update(busca, livro);
+	let livroAtualizado = await Livro.update(busca, dados);
 
 	res.json(livroAtualizado);
 };
@@ -40,7 +40,7 @@ const deletar = async (req, res) => {
 	let livro = await Livro.search(id);
 	let livroDeletado = await Livro.deletar(livro);
 
-	res.json(livroDeletado);
+	res.redirect("/livros/listar");
 };
 
-export { create, list, search, update, deletar };
+export { criar, listar, buscar, atualizar, deletar };

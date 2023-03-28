@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/db.js";
-
+import { Editora } from "./Editora.js";
 const Livro = sequelize.define("Livro", {
   id: {
     type: DataTypes.INTEGER,
@@ -12,9 +12,11 @@ const Livro = sequelize.define("Livro", {
     allowNull: false,
   },
   dataDeLancamento: {
-    type: DataTypes.DATE,
+    type: DataTypes.DATEONLY,
   },
 });
+
+// Livro.belongsTo(Editora);
 
 try {
   await Livro.sync();
@@ -46,7 +48,6 @@ async function list() {
 async function search(id) {
   try {
     let livro = await Livro.findByPk(id);
-
     if (livro === null) {
       return {};
     } else {
@@ -76,4 +77,4 @@ async function deletar(livro) {
   }
 }
 
-export { createBook, list, search, update, deletar };
+export { createBook, list, search, update, deletar, Livro };

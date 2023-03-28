@@ -1,3 +1,42 @@
 *{
-  background-color: black;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.section{
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.d-flex{
+  margin-top: 40px;
+  width: 30%;
+  margin-left: 450px;
+}
+.container-card{
+  display: flex;
+  justify-content: center;
+  margin-top: 160px;
+}
+.container-card .card .card-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-button{
+  margin-left: 70px;
+}
+.card-data{
+  margin-left: 30px;
+}
+#card-titulo{
+  margin-left: 75px
+}
+.section{
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.card{
+  margin-top: 15px;
 }

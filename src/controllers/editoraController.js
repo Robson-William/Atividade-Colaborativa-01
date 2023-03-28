@@ -1,6 +1,6 @@
 import * as Editora from "../models/Editora.js";
 
-const create = async (req, res) => {
+const criar = async (req, res) => {
   let editora = req.body;
 
   let editoraSalvo = await Editora.createEditora(editora);
@@ -8,13 +8,13 @@ const create = async (req, res) => {
   res.json(editoraSalvo);
 };
 
-const list = async (req, res) => {
+const listar = async (req, res) => {
 	let editoras = await Editora.list();
 
 	res.render("pages/index", {editoras})
 };
 
-const search = async (req, res) => {
+const buscar = async (req, res) => {
   let {id} = req.params;
 
 	let editora = await Editora.search(id);
@@ -22,7 +22,7 @@ const search = async (req, res) => {
 	res.json(editora);
 };
 
-const update = async (req, res) => {
+const atualizar = async (req, res) => {
 	let {id} = req.params;
   let {titulo, dataDeLancamento} = req.body;
 
@@ -43,4 +43,4 @@ const deletar = async (req, res) => {
 	res.json(editoraDeletada);
 };
 
-export { create, list, search, update, deletar };
+export { criar, listar, buscar, atualizar, deletar };

@@ -1,25 +1,19 @@
 {% extends "layout.html" %} 
 
-{% set title = "Home" %} 
+{% set title = "Buscar" %} 
 
 
 {% block content %}
-        <form class="d-flex" role="search" action="/livros/buscar">
-          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="id">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
-        </form>
         <section class="section">
-                {% for livro in livros %}
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
                         <h5 class="card-title">{{livro.titulo}}</h5>
                         <h6 class="card-subtitle mb-2 text-body-secondary">id: {{livro.id}}</h6>
                         <p class="card-text">{{livro.dataDeLancamento}}</p>
-                        <a href="/livros/atualizar/{{livro.id}}"><button type="button" class="btn btn-success">Editar</button></a>
+                        <button type="button" class="btn btn-success">Editar</button>
                         <a href="/livros/deletar/{{livro.id}}"><button type="button" class="btn btn-danger">Excluir</button></a>
                         </div>
-                    </div>
-                {% endfor %}           
+                    </div>         
         </section>     
     </div>
 {%endblock %}

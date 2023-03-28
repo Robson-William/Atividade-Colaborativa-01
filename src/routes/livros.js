@@ -3,10 +3,14 @@ import * as livroController from "../controllers/livroController.js";
 
 const router = express.Router();
 
-router.post("/create", livroController.create);
-router.get("/list", livroController.list);
-router.get("/search/:id", livroController.search);
-router.put("/update/:id", livroController.update);
-router.delete("/delete/:id", livroController.deletar);
+router.get("/criar", (req, res) => res.render("pages/registrar")) 
+router.post("/criar", livroController.criar);
+router.get("/listar", livroController.listar);
+router.get("/buscar", livroController.buscar);
+router.post("/atualizar/:id", livroController.atualizar);
+router.get("/atualizar/:id", (req, res) => {
+  res.render("pages/editar")
+})
+router.get("/deletar/:id", livroController.deletar);
 
 export { router };

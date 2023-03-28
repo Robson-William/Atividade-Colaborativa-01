@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/db.js";
+import { Livro } from "./Livro.js"
 
 const Editora = sequelize.define("Editora", {
   id: {
@@ -18,6 +19,8 @@ const Editora = sequelize.define("Editora", {
     type: DataTypes.STRING,
   },
 });
+
+// Editora.hasMany(Livro);
 
 try {
 	await Editora.sync();
