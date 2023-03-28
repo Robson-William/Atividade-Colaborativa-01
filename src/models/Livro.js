@@ -16,17 +16,9 @@ const Livro = sequelize.define("Livro", {
   },
 });
 
-try {
-  await Livro.sync();
-  console.log("Sincronizado!");
-} catch (e) {
-  console.log(e);
-}
-
-async function createBook(dados) {
+async function criarLivro(dados) {
   try {
-    let livroBuild = Livro.build(dados);
-    let livro = await livroBuild.save();
+		let livro = await Livro.create(dados);
 
     return livro;
   } catch (e) {
@@ -34,16 +26,16 @@ async function createBook(dados) {
   }
 }
 
-async function list() {
+async function listar() {
   try {
-    let list = await Livro.findAll();
-    return list;
+    let listar = await Livro.findAll();
+    return listar;
   } catch (e) {
     console.log(e);
   }
 }
 
-async function search(id) {
+async function buscar(id) {
   try {
     let livro = await Livro.findByPk(id);
 
@@ -57,7 +49,7 @@ async function search(id) {
   }
 }
 
-async function update(livro, dados) {
+async function atualizar(livro, dados) {
   if (livro === null) {
     return "Não é possivel atualizar. Livro inexistente!";
   } else {
@@ -76,4 +68,4 @@ async function deletar(livro) {
   }
 }
 
-export { createBook, list, search, update, deletar };
+export { criarLivro, listar, buscar, atualizar, deletar };

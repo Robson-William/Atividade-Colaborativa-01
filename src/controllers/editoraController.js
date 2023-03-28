@@ -1,35 +1,35 @@
 import * as Editora from "../models/Editora.js";
 
-const create = async (req, res) => {
+const criar = async (req, res) => {
   let editora = req.body;
 
-  let editoraSalvo = await Editora.createEditora(editora);
+  let editoraSalvo = await Editora.criarEditora(editora);
 
   res.json(editoraSalvo);
 };
 
-const list = async (req, res) => {
-	let editoras = await Editora.list();
+const listar = async (req, res) => {
+	let editoras = await Editora.listar();
 
 	res.render("pages/index", {editoras})
 };
 
-const search = async (req, res) => {
+const buscar = async (req, res) => {
   let {id} = req.params;
 
-	let editora = await Editora.search(id);
+	let editora = await Editora.buscar(id);
 
 	res.json(editora);
 };
 
-const update = async (req, res) => {
+const atualizar = async (req, res) => {
 	let {id} = req.params;
   let {titulo, dataDeLancamento} = req.body;
 
 	let editora = {titulo, dataDeLancamento};
-	let busca = await Editora.search(id);
+	let busca = await Editora.buscar(id);
 
-	let editoraAtualizada = await Editora.update(busca, editora);
+	let editoraAtualizada = await Editora.atualizar(busca, editora);
 
 	res.json(editoraAtualizada);
 };
@@ -37,10 +37,10 @@ const update = async (req, res) => {
 const deletar = async (req, res) => {
   let {id} = req.params;
 
-	let editora = await Editora.search(id);
+	let editora = await Editora.buscar(id);
 	let editoraDeletada = await Editora.deletar(editora);
 
 	res.json(editoraDeletada);
 };
 
-export { create, list, search, update, deletar };
+export { criar, listar, buscar, atualizar, deletar };

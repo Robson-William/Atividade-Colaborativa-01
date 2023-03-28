@@ -19,14 +19,7 @@ const Editora = sequelize.define("Editora", {
   },
 });
 
-try {
-	await Editora.sync();
-	console.log("Sincronizado!");
-} catch(e) {
-	console.log(e);
-}
-
-async function createEditora(dados) {
+async function criarEditora(dados) {
   try {
     let editoraBuild = Editora.build(dados);
     let editora = await editoraBuild.save();
@@ -36,17 +29,17 @@ async function createEditora(dados) {
   }
 }
 
-async function list() {
+async function listar() {
   try {
-    let list = await Editora.findAll();
+    let listar = await Editora.findAll();
 
-    return list;
+    return listar;
   } catch (e) {
     console.log(e);
   }
 }
 
-async function search(id) {
+async function buscar(id) {
   try {
     let editora = await Editora.findByPk(id);
 
@@ -60,7 +53,7 @@ async function search(id) {
   }
 }
 
-async function update(editora, dados) {
+async function atualizar(editora, dados) {
 	if(editora === null){
 		return "Não é possivel atualizar. Editora inexistente!";
 	} else {
@@ -79,4 +72,4 @@ async function deletar(editora) {
 	}
 }
 
-export { createEditora, list, search, Editora };
+export { criarEditora, listar, buscar, atualizar, deletar };
