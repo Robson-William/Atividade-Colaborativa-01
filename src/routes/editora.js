@@ -3,10 +3,10 @@ import * as editoraController from "../controllers/editoraController.js"
 
 const router = express.Router();
 
-router.post("/criar", editoraController.create);
-router.get("/listar", editoraController.list);
-router.get("/buscar/:id", editoraController.search)
-router.put("/atualizar/:id", editoraController.update)
-router.delete("/deletar/:id"), editoraController.deletar;
+router.post("/criar", editoraController.criar);
+router.get("/listar", editoraController.listar);
+router.get("/buscar/:id", editoraController.buscar)
+router.put("/atualizar/:id", editoraController.atualizar)
+router.delete("/deletar/:id", editoraController.deletar);
 
 export {router};
