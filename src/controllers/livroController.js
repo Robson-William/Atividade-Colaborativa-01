@@ -1,9 +1,14 @@
 import * as Livro from "../models/Livro.js";
+import * as Editora from "../models/Editora.js";
 
 const criar = async (req, res) => {
   let livro = req.body;
 
-  let livroSalvo = await Livro.createBook(livro);
+  let livroSalvo = await Livro.criarLivro(livro);
+
+	let editora = await Editora.buscar()
+
+	livroSalvo.setEditora()
 
   res.redirect("listar");
 };
@@ -37,7 +42,7 @@ const atualizar = async (req, res) => {
 const deletar = async (req, res) => {
   let {id} = req.params;
 
-	let livro = await Livro.search(id);
+	let livro = await Livro.buscar(id);
 	let livroDeletado = await Livro.deletar(livro);
 
 	res.redirect("/livros/listar");

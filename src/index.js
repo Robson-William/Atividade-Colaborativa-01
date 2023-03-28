@@ -3,10 +3,13 @@ import express from "express";
 import * as dotenv from "dotenv";
 import router from "./routes/index.js";
 import nunjucks from "nunjucks";
+import * as migrations from "./migrations/index.js";
 
 // Configurando
 const app = express();
 dotenv.config();
+
+migrations.up();
 
 app.use(express.static('public'));
 app.set("view engine", "html");
