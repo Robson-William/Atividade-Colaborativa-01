@@ -9,7 +9,7 @@ const criar = async (req, res) => {
 };
 
 const listar = async (req, res) => {
-	let editoras = await Editora.list();
+	let editoras = await Editora.listar();
 
 	res.render("pages/index", {editoras})
 };

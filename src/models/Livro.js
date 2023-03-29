@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/db.js";
-import { Editora } from "./Editora.js";
+
 const Livro = sequelize.define("Livro", {
   id: {
     type: DataTypes.INTEGER,
@@ -67,8 +67,4 @@ async function deletar(livro) {
   }
 }
 
-<<<<<<< HEAD
-export { createBook, list, search, update, deletar, Livro };
-=======
 export { criarLivro, listar, buscar, atualizar, deletar };
->>>>>>> 9b6fa2418f9b5d9320b80c31a7e880bffa9661b2
